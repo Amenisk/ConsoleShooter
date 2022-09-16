@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleShooter
+namespace Weapons.Interfaces
 {
-    internal interface IShuriken
+    public interface IUpgradable
     {
+        public void UpgradeDamage() { }
     }
 }
