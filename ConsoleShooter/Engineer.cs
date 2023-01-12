@@ -5,11 +5,11 @@ public class Engineer
 {
 	public void Repair(IRepairable weapon)
 	{
-		weapon.Repair();
+		Task.Run(() => weapon.Repair());
 	}
 
 	public void Upgrade(IUpgradable weapon)
 	{
-		weapon.UpgradeDamage();
+		Task.Run(() => weapon.UpgradeDamage());
 	}
 }

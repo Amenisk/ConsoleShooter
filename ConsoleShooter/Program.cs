@@ -13,18 +13,24 @@ class Program
         Shuriken shuriken = new Shuriken(10);
         SniperRiffle sniperRiffle = new SniperRiffle(35, 10);
 
-        gunslinger.Hit(kunai);
-        gunslinger.Hit(machete);
-        gunslinger.Throw(shuriken);
-        gunslinger.Throw(kunai);
-        gunslinger.Shoot(sniperRiffle);
+        var t1 = Task.Run(() => gunslinger.Hit(kunai));
+        var t2 = Task.Run(() => gunslinger.Hit(machete));
+        Task.WaitAll(t1, t2);
+
+        var t3 = Task.Run(() => gunslinger.Throw(shuriken));
+        var t4 = Task.Run(() => gunslinger.Throw(kunai));
+        Task.WaitAll(t3, t4);
+
         gunslinger.Shoot(machineGun);
         gunslinger.FireBurst(machineGun);
+
+        var t5 = Task.Run(() => gunslinger.Shoot(sniperRiffle));
+        var t6 = Task.Run(() => gunslinger.Recharge(machineGun));
+        Task.WaitAll(t5, t6);
 
         engineer.Upgrade(machineGun);
         engineer.Repair(kunai);
 
-        gunslinger.Shoot(machineGun);
         gunslinger.Recharge(machineGun);
     }
 }
