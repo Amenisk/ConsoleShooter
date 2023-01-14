@@ -31,6 +31,6 @@ class Program
         engineer.Upgrade(machineGun);
         engineer.Repair(kunai);
 
-        gunslinger.Recharge(machineGun);
+        gunslinger.Recharge(sniperRiffle);
     }
 }
